@@ -21,9 +21,9 @@ export const cryptoList = async() =>{
     }
 }
 
-export const convert = async(input:{currency:string,crypto:string}) =>{
+export const convert = async(input:{currency:string,crypto:string,amount:string}) =>{
     try{
-        const data = await axios.get(CONVERT_URL+`?currency=${input.currency}&crypto=${input.crypto}`);
+        const data = await axios.get(CONVERT_URL+`?currency=${input.currency}&crypto=${input.crypto}&amount=${input.amount}`);
         return data.data;
     }catch(err){
         console.log("Error while fetching currency list",err);
