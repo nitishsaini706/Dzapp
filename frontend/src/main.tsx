@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <Router>
             
             <Routes>
-                <Route exact path="/" element={ <App />} />
+                <Route path="/" element={ <App />} />
                 <Route
                     path="*"
                     element={<div>Something went wrong</div>}

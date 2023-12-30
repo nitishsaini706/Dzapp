@@ -1,4 +1,4 @@
-import Converter from './components/Converter'
+import Converter from "./components/Component";
 import "./App.css"
 function App() {
 
