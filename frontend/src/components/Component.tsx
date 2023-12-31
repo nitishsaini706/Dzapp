@@ -57,12 +57,12 @@ const Converter = () => {
     };
     setLoading(true);
     convert(query)
-      .then((res) => res.success && setResult(res.data.data))
+      .then((res) => {res.success && setResult(res.data);setLoading(false);})
       .catch((err) => {
         console.error("Error in converting:", err);
         throw err;
       });
-    setLoading(false);
+    
   };
 
   return (
@@ -137,7 +137,7 @@ const Converter = () => {
       </div>
       <input type="number" name="amount" value={amount} placeholder="Amount" onChange={(e) => { setAmount(e.target.value) }} />
       <button style={{ border: "2px solid white", marginLeft: "20px" }} onClick={convertCurrency}>Convert</button>
-      {result != "" && <div><label>{result}</label></div>}
+      {result != "0" && <div><label>{result}</label></div>}
     </>
   );
 };
