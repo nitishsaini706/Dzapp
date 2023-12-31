@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { currencyList, convert, cryptoList } from "../handlers/apiCalls";
 
-
 interface Crypto {
   id: string;
   name: string;
@@ -12,7 +11,7 @@ const Converter = () => {
   const [currencies, setCurrenciesList] = useState({});
   const [cryptos, setCryptosList] = useState<Crypto[]>([]);
   const [currency, setCurrency] = useState("usd");
-  const [amount, setAmount] = useState("0");
+  const [amount, setAmount] = useState("");
   const [crypto, setCrypto] = useState("");
   const [result, setResult] = useState("");
   const [show, setShow] = useState(false);
@@ -44,7 +43,7 @@ const Converter = () => {
       return;
     }
 
-    if (amount === "0") {
+    if (amount === "") {
       setShow(true);
       setMiss("Amount should be greater than 0");
       return;
@@ -108,6 +107,7 @@ const Converter = () => {
       <div style={{ display: "flex", justifyContent: "center", margin: "20px" }}>
         <div style={{ marginRight: "50px", display: "flex", flexDirection: 'column' }}>
           <div>
+          
 
             <label style={{ marginRight: "5px" }}>Currency *</label>
             <select style={{ bottom: "0", maxWidth: "100px" }} onChange={(e) => { setCurrency(e.target.value) }} name="currency">
@@ -137,7 +137,7 @@ const Converter = () => {
       </div>
       <input type="number" name="amount" value={amount} placeholder="Amount" onChange={(e) => { setAmount(e.target.value) }} />
       <button style={{ border: "2px solid white", marginLeft: "20px" }} onClick={convertCurrency}>Convert</button>
-      {result != "0" && <div><label>{result}</label></div>}
+      {result != "" && <div style={{margin:"20px"}}><label>Result : {result}</label></div>}
     </>
   );
 };
